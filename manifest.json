@@ -1,0 +1,26 @@
+{
+  "name": "Duolingo Unicode Normalizer",
+  "version": "1.0",
+  "description": "Automatically normalizes Duolingo answers and dictionary searches.",
+  "permissions": [
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "https://*.duolingo.com/"
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": [ "src/background.js" ]
+  },
+  "content_scripts": [
+    {
+      "matches": [ "https://*.duolingo.com/*" ],
+      "js": [ "src/content.js" ]
+    }
+  ],
+  "icons": {
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "manifest_version": 2
+}
