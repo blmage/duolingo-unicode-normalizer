@@ -2,6 +2,13 @@
 
 A minimal browser extension for automatically normalizing inputs on Duolingo.
 
+## Download
+
+* [**Chrome** extension](https://chrome.google.com/webstore/detail/duolingo-unicode-normaliz/faikjkggoclbeabkigadengajchidand)
+* [**Firefox** add-on](https://addons.mozilla.org/firefox/addon/duolingo-unicode-normalizer/)
+
+## Description
+
 ### The problem(s)
 
 Typos are detected in seemingly perfectly valid answers:
@@ -12,7 +19,7 @@ Searches for existing words (with accented characters) do not return any result:
 
 ![no_word_found](https://user-images.githubusercontent.com/25432517/60760068-5a46b080-a02f-11e9-81a3-3901721b481d.png)
 
-### The cause
+## The cause
 
 Duolingo expects answers and dictionary searches to be __NFC-normalized__ strings
 (see the [Unicode Normalization FAQ](https://unicode.org/faq/normalization.html)).
