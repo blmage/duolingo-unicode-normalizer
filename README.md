@@ -2,6 +2,13 @@
 
 A minimal browser extension for automatically normalizing inputs on Duolingo.
 
+## Download
+
+* [**Chrome** extension](https://chrome.google.com/webstore/detail/duolingo-unicode-normaliz/faikjkggoclbeabkigadengajchidand)
+* [**Firefox** add-on](https://addons.mozilla.org/firefox/addon/duolingo-unicode-normalizer/)
+
+## Description
+
 ### The problem(s)
 
 Typos are detected in seemingly perfectly valid answers:
