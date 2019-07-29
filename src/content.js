@@ -1,5 +1,6 @@
 (function () {
-    const ANSWER_INPUT_SELECTOR = 'textarea[data-test="challenge-translate-input"]';
+    const WORD_ANSWER_INPUT_SELECTOR = 'input[data-test="challenge-text-input"]';
+    const FULL_ANSWER_INPUT_SELECTOR = 'textarea[data-test="challenge-translate-input"]';
     let answerInput = null;
     let isNormalizing = false;
 
@@ -24,7 +25,8 @@
     }
 
     window.setInterval(function () {
-        let newAnswerInput = document.querySelector(ANSWER_INPUT_SELECTOR);
+        const newAnswerInput = document.querySelector(WORD_ANSWER_INPUT_SELECTOR)
+                            || document.querySelector(FULL_ANSWER_INPUT_SELECTOR);
 
         if (newAnswerInput && (newAnswerInput !== answerInput)) {
             answerInput = newAnswerInput;
