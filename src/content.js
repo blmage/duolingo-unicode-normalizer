@@ -4,7 +4,7 @@
     let answerInput = null;
     let isNormalizing = false;
 
-    function normalizeAnswerValue() {
+    function normalizeAnswerValue(dispatchChange) {
         if (isNormalizing || !answerInput || !answerInput.value) {
             return;
         }
@@ -17,8 +17,12 @@
             if (answer !== normalizedAnswer) {
                 isNormalizing = true;
                 answerInput.value = normalizedAnswer;
-                answerInput.dispatchEvent(new Event('change'));
-                answerInput.dispatchEvent(new Event('blur'));
+
+                if (dispatchChange) {
+                    answerInput.dispatchEvent(new Event('change'));
+                    answerInput.dispatchEvent(new Event('blur'));
+                }
+
                 isNormalizing = false;
             }
         }
@@ -32,12 +36,16 @@
             answerInput = newAnswerInput;
 
             answerInput.addEventListener('blur', function () {
-                normalizeAnswerValue();
+                normalizeAnswerValue(true);
+            });
+
+            answerInput.addEventListener('input', function () {
+                normalizeAnswerValue(false);
             });
 
             answerInput.addEventListener('keydown', function(e) {
                 if (13 === e.keyCode) {
-                    normalizeAnswerValue();
+                    normalizeAnswerValue(true);
                 }
             });
         }
