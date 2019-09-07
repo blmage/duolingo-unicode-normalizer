@@ -16,7 +16,23 @@
 
             if (answer !== normalizedAnswer) {
                 isNormalizing = true;
-                answerInput.value = normalizedAnswer;
+
+                if ((document.activeElement === answerInput)
+                    && (answerInput.selectionStart === answerInput.selectionEnd)
+                ) {
+                    // The answer input is focused, the cursor will be positioned at the end of the text upon changing
+                    // the value: normalize the answer and reposition the cursor at its previous spot.
+                    let selectionStart = answerInput.selectionStart;
+                    const behindText = answer.substring(0, selectionStart);
+                    selectionStart -= behindText.length - behindText.normalize().length;
+                    answerInput.value = normalizedAnswer;
+                    answerInput.selectionStart = selectionStart;
+                    answerInput.selectionEnd = selectionStart;
+                } else {
+                    // Disregard the case where there is a non-empty selection, as it does not seem that it can happen
+                    // with the events we currently listen to (the selection actually gets reset on user input).
+                    answerInput.value = normalizedAnswer;
+                }
 
                 if (dispatchChange) {
                     answerInput.dispatchEvent(new Event('change'));
