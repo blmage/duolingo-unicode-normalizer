@@ -1,8 +1,20 @@
 (function () {
     const WORD_ANSWER_INPUT_SELECTOR = 'input[data-test="challenge-text-input"]';
     const FULL_ANSWER_INPUT_SELECTOR = 'textarea[data-test="challenge-translate-input"]';
+
+    let options = {};
     let answerInput = null;
     let isNormalizing = false;
+    let hasSubmittedAnswer = false;
+
+    function reloadOptions() {
+        chrome.storage.sync.get('options', function (items) {
+            options = Object(items.options || {});
+        });
+    }
+
+    reloadOptions();
+    chrome.storage.onChanged.addListener(reloadOptions);
 
     function normalizeAnswerValue(dispatchChange) {
         if (isNormalizing || !answerInput || !answerInput.value) {
@@ -35,8 +47,8 @@
                 }
 
                 if (dispatchChange) {
-                    answerInput.dispatchEvent(new Event('change'));
                     answerInput.dispatchEvent(new Event('blur'));
+                    answerInput.dispatchEvent(new Event('change', { bubbles: true }));
                 }
 
                 isNormalizing = false;
@@ -49,19 +61,31 @@
                             || document.querySelector(FULL_ANSWER_INPUT_SELECTOR);
 
         if (newAnswerInput && (newAnswerInput !== answerInput)) {
+            hasSubmittedAnswer = false;
             answerInput = newAnswerInput;
 
             answerInput.addEventListener('blur', function () {
                 normalizeAnswerValue(true);
             });
 
-            answerInput.addEventListener('input', function () {
-                normalizeAnswerValue(false);
+            answerInput.addEventListener('keydown', function (e) {
+                if (13 === e.keyCode) {
+                    if (!hasSubmittedAnswer) {
+                        // Delay the answer submission to ensure that Duolingo detects the normalized answer.
+                        e.preventDefault();
+                        e.stopPropagation();
+                        normalizeAnswerValue(true);
+                        hasSubmittedAnswer = true;
+                        answerInput.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 13, bubbles: true }));
+                    } else {
+                        hasSubmittedAnswer = false;
+                    }
+                }
             });
 
-            answerInput.addEventListener('keydown', function(e) {
-                if (13 === e.keyCode) {
-                    normalizeAnswerValue(true);
+            answerInput.addEventListener('input', function () {
+                if (options[OPTION_NORMALIZE_ON_INPUT]) {
+                    normalizeAnswerValue(false);
                 }
             });
         }

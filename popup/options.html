@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Duolingo Unicode Normalizer - Options</title>
+</head>
+<body>
+<div class>
+    <h3>
+        <input type="checkbox" id="normalize_on_input"/>
+        <label for="normalize_on_input">Normalize Answers on Input</label>
+    </h3>
+    <p>Whether to automatically normalize answers on each keystroke.</p>
+    <h4>Pros</h4>
+    <ul>
+        <li>Safer with regards to further Duolingo updates.</li>
+        <li>Fixes rendering of diacritics on some browsers.</li>
+    </ul>
+    <h4>Cons</h4>
+    <ul>
+        <li>Compound characters such as "<strong>ậ</strong>", "<strong>ệ</strong>", "<strong>ộ</strong>́", etc.,
+            now count as <strong>1</strong> character instead of <strong>2</strong>, unlike usual.
+            <br/>This means that, for example, one backspace stroke suffices to remove both the letter and the diacritic.
+        </li>
+    </ul>
+</div>
+<script src="/src/options.js"></script>
+<script src="options.js"></script>
+</body>
+</html>
