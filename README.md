@@ -1,4 +1,7 @@
-# Duolingo Unicode Normalizer
+<h1>
+  <img align="center" width="48" height="48" src="https://raw.githubusercontent.com/blmage/duolingo-unicode-normalizer/master/icons/icon_48.png" />
+  Duolingo Unicode Normalizer
+</h1>
 
 A minimal browser extension for automatically normalizing inputs on Duolingo.
 
