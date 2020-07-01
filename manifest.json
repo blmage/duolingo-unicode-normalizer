@@ -1,6 +1,6 @@
 {
   "name": "Duolingo Unicode Normalizer",
-  "version": "1.4",
+  "version": "2.0.0",
   "description": "Automatically normalizes Duolingo answers and dictionary searches.",
   "permissions": [
     "activeTab",
