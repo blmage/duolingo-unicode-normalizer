@@ -10,7 +10,7 @@
     "https://*.duolingo.com/"
   ],
   "options_ui": {
-    "page": "popup/options.html",
+    "page": "options/popup.html",
     "open_in_tab": false
   },
   "background": {
