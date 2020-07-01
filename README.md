@@ -3,6 +3,9 @@
   Duolingo Unicode Normalizer
 </h1>
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/faikjkggoclbeabkigadengajchidand)](https://chrome.google.com/webstore/detail/duolingo-unicode-normaliz/faikjkggoclbeabkigadengajchidand)
+[![Mozilla Add-on](https://img.shields.io/amo/v/duolingo-unicode-normalizer)](https://addons.mozilla.org/firefox/addon/duolingo-unicode-normalizer/)
+
 A minimal browser extension for automatically normalizing inputs on Duolingo.
 
 ## Download
