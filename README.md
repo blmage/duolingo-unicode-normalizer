@@ -39,9 +39,9 @@ __3 different ways__:
 
 | Version     | Value | Escaped value   |
 | ------------| ----- |---------------- |
-| NFC         | một   | m [\u1ED9](https://unicode-table.com/en/1ED9/) t |
-| VN keyboard | một   | m [\u00F4](https://unicode-table.com/en/00F4/) [\u0323](https://unicode-table.com/en/0323/) t |
-| NFD         | một   | mo [\u0323](https://unicode-table.com/en/0323/) [\u0302](https://unicode-table.com/en/0302/) t |
+| NFC         | một   | m [\u1ED9](https://symbl.cc/en/1ED9/) t |
+| VN keyboard | một   | m [\u00F4](https://symbl.cc/en/00F4/) [\u0323](https://symbl.cc/en/0323/) t |
+| NFD         | một   | mo [\u0323](https://symbl.cc/en/0323/) [\u0302](https://symbl.cc/en/0302/) t |
 
 ### The solution
 
