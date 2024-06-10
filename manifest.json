@@ -3,19 +3,14 @@
   "version": "2.0.0",
   "description": "Automatically normalizes Duolingo answers and dictionary searches.",
   "permissions": [
-    "activeTab",
-    "storage",
-    "webRequest",
-    "webRequestBlocking",
+    "activeTab"
+  ],
+  "host_permissions": [
     "https://*.duolingo.com/"
   ],
   "options_ui": {
     "page": "options/popup.html",
     "open_in_tab": false
-  },
-  "background": {
-    "persistent": true,
-    "scripts": [ "src/background.js" ]
   },
   "content_scripts": [
     {
@@ -29,10 +24,5 @@
     "128": "icons/icon_128.png",
     "256": "icons/icon_256.png"
   },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{1a08ecd0-f0b2-4b76-a130-2df3a3079496}"
-    }
-  },
-  "manifest_version": 2
+  "manifest_version": 3
 }
